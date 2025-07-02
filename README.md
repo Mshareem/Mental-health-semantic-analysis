@@ -1,65 +1,55 @@
-🧠 Mental Health Text Classification using BERT
-This project focuses on classifying user-generated text into mental health categories using Transformer-based models, specifically BERT, in a Kaggle-compatible environment. It explores preprocessing techniques, handling class imbalance, and model fine-tuning using Hugging Face Transformers.
+# 🧠 Mental Health Text Classification using BERT
 
-🎯 Objective
-To build a text classification model that can accurately detect different mental health conditions (e.g., anxiety, depression) from social media or forum text using state-of-the-art NLP techniques.
+This project aims to classify user-generated text into different mental health conditions using transformer-based models, specifically BERT. The model is fine-tuned on labeled text data and helps in early detection of mental health issues through Natural Language Processing (NLP).
 
-⚙️ Tech Stack
-Language: Python
+## 🎯 Objective
 
-Frameworks & Libraries:
+To develop an intelligent system that can detect mental health issues like anxiety, depression, etc., from written text using machine learning—particularly BERT-based deep learning models.
 
-pandas, numpy – Data handling
+## ⚙️ Tech Stack
 
-matplotlib, seaborn – Visualization
+- **Programming Language:** Python
+- **Libraries & Frameworks:**
+  - `pandas`, `numpy` – Data manipulation
+  - `matplotlib`, `seaborn` – Visualization
+  - `nltk`, `re` – Text preprocessing
+  - `scikit-learn` – Evaluation metrics, preprocessing
+  - `transformers (Hugging Face)` – BERT model/tokenizer, training API
+  - `torch` – Backend for training
+  - `imblearn` – Random over-sampling to handle class imbalance
+  - `joblib` – Saving models (optional)
 
-scikit-learn – Evaluation & preprocessing
+## 📁 Dataset
 
-transformers (Hugging Face) – BERT model and tokenizer
+- **Source:** Kaggle Dataset
+- **File:** `Combined Data.csv`
+- **Columns:** Text, Label (mental health issue category)
 
-nltk – NLP preprocessing (stopwords)
+The dataset contains posts or messages labeled with various mental health conditions.
 
-torch – PyTorch backend for model training
+## 🧹 Preprocessing Steps
 
-imblearn – Oversampling for class imbalance
+- Removal of stopwords using `nltk`
+- Lowercasing and regex cleaning
+- Label encoding for categories
+- Oversampling using `RandomOverSampler` to balance classes
 
-📁 Dataset
-Source: Combined Data.csv (loaded from Kaggle dataset)
+## 🧠 Model Details
 
-Description: Text samples labeled with corresponding mental health conditions.
+- **Model:** `bert-base-uncased`
+- **Tokenizer:** `BertTokenizer` from Hugging Face
+- **Training:** Done using Hugging Face `Trainer` API
+- **Training Arguments:**
+  - Batch size
+  - Epochs
+  - Logging/Offline mode for W&B
+- **Platform:** Compatible with GPU (e.g., Kaggle with NVIDIA Tesla T4)
 
-🧼 Preprocessing
-Removal of stopwords using nltk
+## 📊 Evaluation
 
-Regex cleaning
+Each model is evaluated using:
 
-Label encoding
+- Confusion Matrix
+- Classification Report
+- Accuracy, Precision, Recall, F1-score
 
-Oversampling using RandomOverSampler to balance classes
-
-🧠 Model
-Base model: bert-base-uncased (from Hugging Face Transformers)
-
-Fine-tuned using Trainer and TrainingArguments classes
-
-Tokenized using BertTokenizer
-
-📊 Evaluation
-Classification report (Precision, Recall, F1-score)
-
-Confusion Matrix
-📌 Highlights
-Uses RandomOverSampler to tackle imbalanced data
-
-Completely offline mode for W&B logging
-
-Utilizes Hugging Face’s easy-to-use Trainer API
-
-Optimized for GPU runtime on Kaggle (e.g., Tesla T4)
-
-🚀 Future Improvements
-Experiment with larger models like roberta-base, distilbert
-
-Deploy via REST API using FastAPI or Flask
-
-UI for user to input custom text and get classification
